@@ -37,7 +37,7 @@ class Timer(object):
         """
         url = 'https://api.m.jd.com'
         response = requests.get(url, verify=False)
-        timestamp = int(response.headers.get('X-Api-Request-Id'[-13:]))
+        timestamp = int(response.headers.get('X-Api-Request-Id')[-13:])
         return timestamp
 
     def local_time(self):
