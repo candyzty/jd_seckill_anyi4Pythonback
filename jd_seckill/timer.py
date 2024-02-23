@@ -35,9 +35,10 @@ class Timer(object):
         ret = requests.get(url).text
         js = json.loads(ret)
         """
-        response = requests.get("https://www.jd.com")
-        server_time = response.headers['Date']
-        return int(server_time)
+        url = 'https://api.m.jd.com'
+        response = requests.get(url, verify=False)
+        timestamp = int(response.headers.get('X-Api-Request-Id'[-13:]))
+        return timestamp
 
     def local_time(self):
         """
